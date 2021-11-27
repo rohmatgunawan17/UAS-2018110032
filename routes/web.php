@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/daftar', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
+Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');

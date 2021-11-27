@@ -25,4 +25,9 @@ class DaftarController extends Controller
     {
         return view('daftar');
     }
+
+    public function formDaftar()
+    {
+        return view('formDaftar');
+    }
 }

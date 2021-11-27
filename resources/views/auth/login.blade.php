@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Login')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -78,7 +78,7 @@
                                        {{ __('Anda berhasil login !!!') }}
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
                                 </div>
                             </div>
                             </div>

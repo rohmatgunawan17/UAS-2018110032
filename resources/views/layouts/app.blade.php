@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Public System') }}</title>
+    <title>@yield('title') | Sensus Public System </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,8 +20,18 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel='Shortcut icon' href='img/Header.png'>
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <a href="{{ url('/') }}"><img src="img/logo.png" alt="" >
+        </a>
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                Public System
+            </a>
+        </div>
+    </nav>
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
@@ -62,5 +72,10 @@
             @yield('content')
         </main>
 </div>
+<footer class="bg-white py-4 text-dark mt-4">
+    <div class="container text-center">
+        <h6 class="text-center"> Copyright © 2018110032 - <?php echo date("Y"); ?> - ROHMAT GUNAWAN </h6>
+    </div>
+</footer>
 </body>
 </html>
