@@ -6,68 +6,18 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | Sensus Public System </title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css ">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet"> --}}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/css/style.css') }}">
     <link rel='Shortcut icon' href='img/Header.png'>
 </head>
-<style>
-#sidebar-container{
-    float: right;
-    font-size: 13px;
-    border: none;
-    min-width: 50px;
-    border-radius: 2px;
-    border: none;
-    outline: none !important;
-    margin-left: 10px;
-    background-color: #333;
-    padding: 0;
-
-}
-#sidebar-container .profil_image{
-	width: 100px;
-	height: 100px;
-	margin-bottom: 5px;
-    margin-top: 20px;
-}
-
-#sidebar-container h4{
-    margin-left: 10px;
-    margin-right: 10px;
-	color: #ccc;
-	margin-top: 0;
-	margin-bottom: 30px;
-    position: relative;
-}
-
-#sidebar-container a{
-	color: #fff;
-	display: block;
-	width: 100%;
-	line-height: 60px;
-	text-decoration: none;
-	padding-left: 10px;
-	box-sizing: border-box;
-	transition: 0.5s;
-	transition-property: background;
-}
-
-#sidebar-container a:hover{
-	background: #8ba8ad;
-}
-
-#sidebar-container i{
-	padding-right: 10px;
-
-}
-</style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -89,7 +39,7 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Authentication Links -->
-                        @guest
+                        {{-- @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -105,9 +55,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -115,43 +64,75 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endguest --}}
                     </ul>
                 </div>
             </div>
         </nav>
-    <div class="row" id="body-row">
-        {{-- Sidebar --}}
-        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
-            {{-- Menu List--}}
-            <ul class="list-group">
-                <center>
-                    <img src="img/Profil.png" class="profil_image" alt="">
-                    <h4>Administrator</h4>
-                </center>
-                <a href="/home"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-                <a href="/daftar"><i class="fas fa-th"></i><span>Pendaftaran</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>Component</span></a>
-                <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
-                <a href="#"><i class="fas fa-info-circle"></i><span>Informasi</span></a>
-                <a href="#"><i class="fas fa-cogs"></i><span>Setting</span></a>
-            </ul>
-        </div>
+        <div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar">
+                        <div class="custom-menu">
+                            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    </button>
+                </div>
+                    <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+                        <div class="user-logo">
+                            <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                            <h3>{{ Auth::user()->name }}</h3>
+                        </div>
+                    </div>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="/home"><span class="fa fa-home mr-2"></span> Home</a>
+                    </li>
+                    <li>
+                        {{-- adan Notif --}}
+                        {{-- <a href="/pendaftaran"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Download</a> --}}
+                    </li>
+                    <li>
+                        <a href="/daftar"><span class="fa fa-table mr-2"></span> Pendaftaran</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-trophy mr-2"></span> Top Review</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-info-circle mr-2"></span> Informasi</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-cog mr-2"></span> Settings</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" {{ __('Logout') }}>
+                        <span class="fa fa-sign-out mr-2"></span>Sign Out</a>
 
-        {{-- Sidebar END --}}
-        {{-- Content --}}
-    <div class="col p-4">
-        <div class="row gy-4">
-            @yield('content')
-        </div>
-        {{-- Content END --}}
-        <footer class="bg-white py-4 text-dark mt-4">
-            <div class="container">
-                <h6 class="text-center"> Copyright © 2018110032 - <?php echo date("Y"); ?> - ROHMAT GUNAWAN </h6>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                @yield('content')
+
+                {{-- Content END --}}
+                <footer class="badge-dark py-4 mt-4">
+                    <div class="container">
+                        <h6 class="text-center"> Copyright © 2018110032 - <?php echo date("Y"); ?> - ROHMAT GUNAWAN </h6>
+                    </div>
+                </footer>
             </div>
-        </footer>
+        </div>
     </div>
-</div>
-
 </body>
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('style/js/jquery.min.js') }}"></script>
+<script src="{{ asset('style/js/popper.js') }}"></script>
+<script src="{{ asset('style/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('style/js/main.js') }}"></script>
 </html>
+

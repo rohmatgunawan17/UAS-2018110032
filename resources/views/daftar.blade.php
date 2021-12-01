@@ -1,16 +1,16 @@
+{{-- @extends('layouts.app') --}}
 @extends('layouts.master')
 
 @section('title', 'Daftar Penduduk')
 
 @section('content')
-<div class="container pt-4 bg-white">
+<div class="container pt-4 " style="background-color: rgba(202, 199, 199, 0.918)">
     <div class="col p-4">
         <div class="row gy-4">
             <div class="col-md-12">
                 <form action="{{url('/search')}}" type="get">
                     <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Search Pokedex" aria-label="Search"
-                        aria-describedby="search-addon" name="search" />
+                        <input type="search" class="form-control rounded" placeholder="Search data . . ." aria-label="Search" aria-describedby="search-addon" name="search"/>
                         <button type="submit" class="btn btn-outline-primary">search</button>
                     </div>
                 </form>
@@ -53,9 +53,22 @@
                 <tr>
                     <td align="center" colspan="6">No data yet.</td>
                 </tr>
+                <tr>
+                    <td align="center" colspan="6">
+                        No data yet.
+                    </td>
+                </tr>
             {{-- @endforelse --}}
             </tbody>
         </table>
+        <div class="text-left py-md-2">
+            Halaman :
+            @for ($i = 1; $i < 9; $i++)
+            <button type="button" class="btn btn-dark">
+            {{$i}}
+            </button>
+            @endfor
+        </div>
     </div>
 </div>
 @endsection

@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                                <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#staticBackdrop">
                                     {{ __('Login') }}
                                 </button>
 
@@ -78,7 +78,7 @@
                                        {{ __('Anda berhasil login !!!') }}
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Ok</button>
                                 </div>
                             </div>
                             </div>
