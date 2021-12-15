@@ -21,11 +21,11 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <a href="{{ url('/') }}"><img src="img/logo.png" alt="" >
+        <a href="{{ url('/') }}"><img src="img/header.png" alt="" >
         </a>
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                Public System
+                E-TILANG
             </a>
         </div>
     </nav>
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                @guest
+                {{-- @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
@@ -60,7 +60,7 @@
                             </form>
                         </div>
                     </li>
-                @endguest
+                @endguest --}}
             </ul>
         </div>
     </div>

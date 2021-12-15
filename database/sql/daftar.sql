@@ -1,4 +1,3 @@
-INSERT INTO `pokemons` (`id`, `nkk`, `nik`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `pendidikan`, `jenis_pekerjaan`, `status_perkawinan`, `hubungan_keluarga`, `kewarganegaraan`, `no_paspor`,`no_kitas_kitap `,`nama_ayah`,`nama_ibu`,`pas_foto`) VALUES
-	(1, 3203241110971234, 4203241110981238, 'Nama Anda 1','laki-laki', 'Cianjur','21-10-2000','Islam','21-10-2000','SLTA/Sederajat','Buruh','Kawin','Kepala Keluarga','Indonesia','-','-','-','-','profil.png'),
-	(2, 3203241110971238, 4203251110981238, 'Nama Anda 2','Perempuan', 'Cianjur','21-10-2002','Islam','21-10-2000','SLTP/Sederajat','Buruh','Kawin','Istri','Indonesia','-','-','-','-','profil.png');
-	
+INSERT INTO `daftar` (`id`, `barang_bukti`, `no_stnk_sim`, `nama`, `no_kendaraan`, `tanggal_tilang`, `tanggal_sidang`, `status_penilangan`, `pelanggaran`, `total_denda`,`tempat_sidang`, `alamat`,`keterangan`,`surat_tilang`) VALUES
+	(1,'STNK', 32032411, 'Nama Anda 1','F5685XR', '2000-01-10','2000-01-17','Berjalan','Tidak Mempunyai SIM',100000,'Kejasaan Negri Bandung','Jl. Sunda No. 2','-','profil.png'),
+	(2, 'SIM', 42032511, 'Nama Anda 2','D5586DDA', '2000-02-11','2000-02-18','Sudah Selesai','Melanggar Lampu merah',75000,'Porlestabes Bandung','Jl. Jakarta 45','-','profil2.png');

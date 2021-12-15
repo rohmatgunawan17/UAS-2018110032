@@ -13,6 +13,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css ">
     {{-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet"> --}}
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/style.css') }}">
@@ -21,11 +24,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <a href="{{ url('/home') }}"><img src="img/logo.png" alt="" >
+            <a href="{{ url('/home') }}"><img src="img/header.png" alt="" >
             </a>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    Public System
+                    E-TILANG
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -75,9 +78,9 @@
                             <button type="button" id="sidebarCollapse" class="btn btn-primary">
                     </button>
                 </div>
-                    <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+                    <div class="img bg-wrap text-center py-4" style="background-image: url(style/images/bg_1.jpg);">
                         <div class="user-logo">
-                            <div class="img" style="background-image: url(images/logo.jpg);"></div>
+                            <div class="img" style="background-image: url(style/images/logo.jpg);"></div>
                             <h3>{{ Auth::user()->name }}</h3>
                         </div>
                     </div>
@@ -134,5 +137,11 @@
 <script src="{{ asset('style/js/popper.js') }}"></script>
 <script src="{{ asset('style/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('style/js/main.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+@stack('script');
 </html>
 

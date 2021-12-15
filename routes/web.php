@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DaftarTilangController;
+use App\Http\Controllers\DaftarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('daftar', DaftarController::class);
+Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.index');
+Route::get('/daftar/create', [DaftarController::class, 'create'])->name('daftar.create');
+Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar.store');
+Route::get('/daftar/{daftar}', [DaftarController::class, 'show'])->name('daftar.show');
+Route::get('/daftar/{daftar}/edit', [DaftarController::class, 'edit'])->name('movies.edit');
+Route::patch('/daftar/{daftar}', [DaftarController::class, 'update'])->name('daftar.update');
+Route::delete('/daftar/{daftar}', [DaftarController::class, 'delete'])->name('daftar.delete');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/daftar', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
-Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');
+// Route::get('/daftar', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
+// Route::get('/detail', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
+// Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');
+// Route::get('/daftar-tilang', [DaftarTilangController::class, 'index']);
+// Route::get('/daftar-tilang-data', [DaftarTilangController::class, 'getDaftarTilangs'])->name('daftar.tilang');

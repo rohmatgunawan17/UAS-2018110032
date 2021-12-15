@@ -2,7 +2,11 @@
 @extends('layouts.master')
 
 @section('title', 'Daftar Penduduk')
-
+@if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session()->get('success') }}
+    </div>
+@endif
 @section('content')
 <div class="container pt-4 " style="background-color: rgba(202, 199, 199, 0.918)">
     <div class="col p-4">
@@ -23,7 +27,7 @@
                 <div class="col-sm-6">
                     <h2>Data Penilangan</h2>
                     <div class="py-2">
-                        <a href="/formDaftar" class="btn btn-outline-primary"><span>+ Tambah Data</span></a>
+                        <a href="/daftar/create" class="btn btn-outline-primary"><span>+ Tambah Data</span></a>
                     </div>
                 </div>
             </div>
@@ -31,7 +35,8 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Barang Bukti</th>
+                    <th>No</th>
+                    <td>Barang Bukti</td>
                     <th>No SIM /STNK</th>
                     <th>Nama</th>
                     <th>No Kendaraan</th>
@@ -39,20 +44,21 @@
                     <th></th>
                 </tr>
             </thead>
-            @foreach ($daftar as $d)
+            @foreach ($daftar as $movie)
             <tbody>
                 <tr>
-                    <th scope="row">{{$d->barang_bukti}}</th>
-                        <td>{{$d->no_stnk_sim}}</td>
-                        <td>{{$d->nama}}</td>
-                        <td>{{$d->no_kendaraan}}</td>
-                        <td>{{$d->tanggal_tilang}}</td>
-                        <td style="width: 20%">
-                            <a href="#"><i class="fas fa-eye" data-toggle="modal" data-target="#staticBackdrop"> detail  </i></a>
-                            <a href="/daftar/edit"><i class="fas fa-pencil-alt"> Edit  </i></a>
-                            <a href="#"><i class="fas fa-minus-circle"> Delete  </i></a>
-                        </td>
-                        </tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $movie->title }}</td>
+                    <td>{{ $movie->genre }}</td>
+                    <td>{{ $movie->year }}</td>
+                    <td>{{ $movie->rating }}</td>
+                    <td>{{ $movie->description }}</td>
+                    <td style="width: 10%">
+                        <a href="{{ route('daftar.show', $movie->id) }}"><i class="fas fa-eye" > Detail  </i></a>
+                        <a href="/daftar/edit"><i class="fas fa-pencil-alt"> Edit  </i></a>
+                        <a href="#"><i class="fas fa-minus-circle"> Delete  </i></a>
+                    </td>
+                </tr>
                 @endforeach
                 <tr>
                     <td align="center" colspan="6">Tidak ada data lagi</td>
@@ -71,7 +77,7 @@
 </div>
 
 {{-- MODAL DETAIL --}}
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -81,41 +87,37 @@
         </button>
         </div>
         <div class="modal-body">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Genre</th>
-                        <th>Year</th>
-                        <th>Rating</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                @foreach ($daftar as $d)
-                <tbody>
-                    <tr>
-                        <th scope="row">{{$d->barang_bukti}}</th>
-                            <td>{{$d->no_stnk_sim}}</td>
-                            <td>{{$d->nama}}</td>
-                            <td>{{$d->no_kendaraan}}</td>
-                            <td>{{$d->tanggal_tilang}}</td>
-                            <td style="width: 40%">{{$d->pelanggaran}}
-                            </td>
-                            </tr>
-                    @endforeach
-                    <tr>
-                        <td align="center" colspan="6">No data yet.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-12">
+            <h2>{{ $daftar->title }}</h2>
+            <h5>
+            <span class="badge badge-primary">
+            <i class="fa fa-star fa-fw"></i>
+            {{ $daftar->rating }}
+            </span>
+            </h5>
+            <p>
+            <ul class="list-inline">
+            <li class="list-inline-item">
+            <i class="fa fa-th-large fa-fw"></i>
+            <em>{{ $daftar->genre }}</em>
+            </li>
+            <li class="list-inline-item">
+            <i class="fa fa-calendar fa-fw"></i>
+            {{ $daftar->year }}
+            </li>
+            </ul>
+            </p>
+            <hr>
+            <p class="lead">{{ $daftar->description }}</p>
+            </div>
+
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Ok</button>
         </div>
     </div>
     </div>
-</div>
+</div> --}}
 @endsection
 
 
