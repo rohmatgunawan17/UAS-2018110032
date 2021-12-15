@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Daftar extends Model
 {
     use HasFactory;
+    protected $fillable = ['title', 'genre', 'year', 'rating', 'description'];
 }

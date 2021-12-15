@@ -55,8 +55,8 @@
                     <td>{{ $movie->description }}</td>
                     <td style="width: 10%">
                         <a href="{{ route('daftar.show', $movie->id) }}"><i class="fas fa-eye" > Detail  </i></a>
-                        <a href="/daftar/edit"><i class="fas fa-pencil-alt"> Edit  </i></a>
-                        <a href="#"><i class="fas fa-minus-circle"> Delete  </i></a>
+                        <a href="{{ route('daftar.edit', $movie->id) }}"><i class="fas fa-pencil-alt"> Edit  </i></a>
+                        <a href="{{ route('daftar.destroy', $movie->id) }}" ><i class="fas fa-minus-circle"> Delete  </i></a>
                     </td>
                 </tr>
                 @endforeach

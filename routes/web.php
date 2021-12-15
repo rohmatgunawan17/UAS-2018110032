@@ -25,9 +25,9 @@ Route::get('/daftar', [DaftarController::class, 'index'])->name('daftar.index');
 Route::get('/daftar/create', [DaftarController::class, 'create'])->name('daftar.create');
 Route::post('/daftar', [DaftarController::class, 'store'])->name('daftar.store');
 Route::get('/daftar/{daftar}', [DaftarController::class, 'show'])->name('daftar.show');
-Route::get('/daftar/{daftar}/edit', [DaftarController::class, 'edit'])->name('movies.edit');
+Route::get('/daftar/{daftar}/edit', [DaftarController::class, 'edit'])->name('daftar.edit');
 Route::patch('/daftar/{daftar}', [DaftarController::class, 'update'])->name('daftar.update');
-Route::delete('/daftar/{daftar}', [DaftarController::class, 'delete'])->name('daftar.delete');
+Route::delete('/daftar/{daftar}', [DaftarController::class, 'destroy'])->name('daftar.destroy');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

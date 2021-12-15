@@ -72,15 +72,27 @@ class DaftarController extends Controller
 
     public function edit(daftar $daftar)
     {
-        //
+        // dump($daftar);
+        return view('edit', compact('daftar'));
     }
     public function update(Request $request, daftar $daftar)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'genre' => 'required|max:100',
+            'description' => 'max:65535',
+            'year' => 'required|integer|min:1900|max:2099',
+            'rating' => 'required|numeric|min:1|max:10',
+        ]);
+        $daftar->update($validateData);
+        $request->session()->flash('success', "Successfully updating {$validateData['title']}!");
+        return redirect()->route('daftar.index');
     }
-    public function delete(daftar $daftar)
+
+    public function destroy(daftar $daftar)
     {
-        //
+        $daftar->delete();
+        return redirect()->route('daftar.index')->with('success', "Successfully deleting {$daftar['title']}!");
     }
 
 
