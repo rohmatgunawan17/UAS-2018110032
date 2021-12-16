@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') | Sensus Public System </title>
+    <title>@yield('title') | E-Tilang </title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,18 +17,15 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
-    <link rel='Shortcut icon' href='img/Header.png'>
+    <link rel='Shortcut icon' href='img/logo.png'>
 </head>
 <body>
+{{-- <div class="app"> --}}
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <a href="{{ url('/') }}"><img src="img/header.png" alt="" >
+        <a href="{{ url('/') }}"><img src="img/logo.png" alt="Polri" class="navbar-brand" style="width: 18%; border-radius: 20%;">E-TILANG
         </a>
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                E-TILANG
-            </a>
-        </div>
     </nav>
+{{-- </div> --}}
     <div class="container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">

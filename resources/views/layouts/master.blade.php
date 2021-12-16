@@ -19,17 +19,26 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('style/css/style.css') }}">
-    <link rel='Shortcut icon' href='img/Header.png'>
+    <link rel='Shortcut icon' href="{{ asset('img/logo.png') }}">
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <a href="{{ url('/home') }}"><img src="img/header.png" alt="" >
+            <a href="{{ url('/home') }}"><img src="{{ asset('img/logo.png') }}" alt="Polri" class="navbar-brand" style="width: 20%; border-radius: 20%;">E-TILANG
             </a>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <div class="md-12">
+                <form action="{{url('/search')}}" type="get">
+                    <div class="input-group">
+                        <input type="search" class="btn " placeholder="Cari Data . . ." aria-label="Search" aria-describedby="search-addon" name="search"/>
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </form>
+            </div>
+                {{-- <a class="navbar-brand" href="{{ url('/home') }}">
                     E-TILANG
-                </a>
+                </a> --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

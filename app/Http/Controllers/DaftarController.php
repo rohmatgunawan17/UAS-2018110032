@@ -48,20 +48,45 @@ class DaftarController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'title' => 'required|max:255',
-            'genre' => 'required|max:100',
-            'description' => 'max:65535',
-            'year' => 'required|integer|min:2020|max:2099',
-            'rating' => 'required|numeric|min:1|max:10',
+            'barang_bukti' => 'required|max:200',
+            'no' => 'required|max:200',
+            'nama' => 'required|max:200',
+            'alamat' => 'required|max:200',
+            'tanggal_tilang' => 'required|max:200',
+            'tanggal_sidang' => 'required|max:200',
+            'pelanggaran' => 'required|max:200',
+            'total_denda' => 'required|integer|max:2500000',
+            'tempat_sidang' => 'max:200',
+            'status_penilangan' => 'max:200',
+            'pelaku' => 'file|image|max:5000',
         ]);
         $daftar = new daftar();
-        $daftar->title = $validateData['title'];
-        $daftar->genre = $validateData['genre'];
-        $daftar->description = $validateData['description'];
-        $daftar->year = $validateData['year'];
-        $daftar->rating = $validateData['rating'];
+        $daftar->barang_bukti = $validateData['barang_bukti'];
+        $daftar->no = $validateData['no'];
+        $daftar->nama = $validateData['nama'];
+        $daftar->alamat = $validateData['alamat'];
+        $daftar->tanggal_tilang = $validateData['tanggal_tilang'];
+        $daftar->tanggal_sidang = $validateData['tanggal_sidang'];
+        $daftar->pelanggaran = $validateData['pelanggaran'];
+        $daftar->total_denda = $validateData['total_denda'];
+        $daftar->tempat_sidang = "tes";
+        $daftar->status_penilangan = "tes";
+        $daftar->pelaku = $validateData['pelaku'];
+        // dd($daftar);
+        // $daftar->save();
+
+        // $daftar = daftar::create($validateData);
+        $fileExtension = $request->pelaku->getClientOriginalExtension();
+        $fileRename = "img-" . time() . ".{$fileExtension}";
+        $request->pelaku->storeAs('public', $fileRename);
+        $daftar->pelaku = $fileRename;
         $daftar->save();
-        $request->session()->flash('success', "Successfully adding {$validateData['title']}!");
+
+
+
+
+
+        $request->session()->flash('success', "Successfully adding {$validateData['nama']}!");
         return redirect()->route('daftar.index');
     }
 
@@ -78,11 +103,17 @@ class DaftarController extends Controller
     public function update(Request $request, daftar $daftar)
     {
         $validateData = $request->validate([
-            'title' => 'required|max:255',
-            'genre' => 'required|max:100',
-            'description' => 'max:65535',
-            'year' => 'required|integer|min:1900|max:2099',
-            'rating' => 'required|numeric|min:1|max:10',
+            'barang_bukti' => 'required|max:200',
+            'no' => 'required|max:200',
+            'nama' => 'required|max:200',
+            'alamat' => 'required|max:200',
+            'tanggal_tilang' => 'required|max:200',
+            'tanggal_sidang' => 'required|max:200',
+            'pelanggaran' => 'required|max:200',
+            'total_denda' => 'required|integer|max:2500000',
+            'tempat_sidang' => 'max:200',
+            'status_penilangan' => 'max:200',
+            'pelaku' => 'file|image|max:5000',
         ]);
         $daftar->update($validateData);
         $request->session()->flash('success', "Successfully updating {$validateData['title']}!");
@@ -95,9 +126,27 @@ class DaftarController extends Controller
         return redirect()->route('daftar.index')->with('success', "Successfully deleting {$daftar['title']}!");
     }
 
-
-    public function formDaftar()
+    public function imageUpload(Request $request)
     {
-        return view('formDaftar');
+        if ($request->hasFile('image')) {
+            echo "Path: " . $request->image->path() . '<br>';
+            echo "Extension: " . $request->image->extension() . '<br>';
+            echo "Org. Extension: " . $request->image->getClientOriginalExtension() . '<br>';
+            echo "MIME Type: " . $request->image->getMimeType() . '<br>';
+            echo "Org. Filename: " . $request->image->getClientOriginalName() . '<br>';
+            echo "Size: " . $request->image->getSize() . '<br>';
+        } else {
+            echo "No uploaded file!";
+        }
+    }
+
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        $daftars = DB::select("SELECT * FROM `daftars`WHERE `name` LIKE '%$search%' OR `no_stnk_sim` LIKE '$search'");
+        return view("search", [
+            'daftars' => $daftars
+        ]);
     }
 }

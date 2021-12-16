@@ -1,23 +1,23 @@
 @extends('layouts.master')
-@section('title', $daftar->title)
+@section('title', $daftar->nama)
 @section('content')
 <div class="col-md-12">
- <h2>{{ $daftar->title }}</h2>
+ <h2>{{ $daftar->nama }}</h2>
  <h5>
  <span class="badge badge-primary">
  <i class="fa fa-star fa-fw"></i>
- {{ $daftar->rating }}
+ {{ $daftar->no }}
  </span>
  </h5>
  <p>
  <ul class="list-inline">
  <li class="list-inline-item">
  <i class="fa fa-th-large fa-fw"></i>
- <em>{{ $daftar->genre }}</em>
+ <em>{{ $daftar->barang_bukti }}</em>
  </li>
  <li class="list-inline-item">
     <i class="fa fa-calendar fa-fw"></i>
-    {{ $daftar->year }}
+    {{ $daftar->total_denda }}
     </li>
     </ul>
     </p>

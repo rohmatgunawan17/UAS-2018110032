@@ -1,61 +1,142 @@
 @extends('layouts.master')
-@section('title', 'Edit Movie')
+{{-- @extends('layouts.app') --}}
+@section('title', 'Edit Data')
 @section('content')
-<h2>Update New Movie</h2>
+
+<div style="background-color: rgba(202, 199, 199, 0.918)">
+    <div class="col-sm-6">
+        <h2>Ubah Data Penilangan</h2>
+    </div>
 <form action="{{ route('daftar.update', ['daftar' => $daftar->id]) }}" method="POST">
     @method('PATCH')
     @csrf
+    <div class="row">
+        <div class="col-md-6 p-4 ">
+            <label for="barang_bukti">Tipe Barang Bukti</label>
+            <input type="text" class="form-control @error('barang_bukti') is-invalid @enderror" name="barang_bukti" id="barang_bukti" value="{{ old('barang_bukti') ?? $daftar->barang_bukti }}">
+            {{-- <select class="form-control @error('bukti') is-invalid @enderror" >
+                <option value="" disabled selected >Select</option>
+                <option value="{{ old('bukti') }}">STNK</option>
+                <option value="{{ old('bukti') }}">SIM</option>
+                <option value="{{ old('bukti') }}">SEPEDA MOTOR</option>
+            </select> --}}
+            @error('barang_bukti')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6 p-4">
+            <label for="no">No : SIM / STNK / Kendaraan</label>
+            <input type="text" class="form-control @error('no') is-invalid @enderror" name="no" id="no" value="{{ old('no')  ?? $daftar->no}}">
+            @error('no')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 p-4 ">
+            <label for="nama">Nama Pelanggar</label>
+            <input type="text" class="form-control @error('titnamale') is-invalid @enderror" name="nama" id="nama" value="{{ old('nama') ?? $daftar->nama}}">
+            @error('nama')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6 p-4">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control @error('kota') is-invalid @enderror" name="alamat" id="alamat" value="{{ old('alamat') ?? $daftar->alamat}}">
+            @error('alamat')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 p-4">
+            <label for="tanggal_tilang">Tanggal Tilang</label>
+            <input type="date" class="form-control @error('tanggal_tilang') is-invalid @enderror" name="tanggal_tilang" id="tanggal_tilang" value="{{ old('tanggal_tilang') ?? $daftar->tanggal_tilang}}">
+            @error('tanggal_tilang')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6 p-4">
+            <label for="tanggal_sidang">Tanggal Sidang</label>
+            <input type="date" class="form-control @error('tanggal_sidang') is-invalid @enderror" name="tanggal_sidang" id="tanggal_sidang" value="{{ old('tanggal_sidang') ?? $daftar->tanggal_sidang}}">
+            @error('tanggal_sidang')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 p-4">
+            <label for="pelanggaran">Pelanggaran</label>
+            <input class="form-control @error('pelanggaran') is-invalid @enderror" name="pelanggaran" id="pelanggaran" rows="3" value="{{ old('pelanggaran') ?? $daftar->pelanggaran}}"</input>
+            @error('pelanggaran')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6 p-4">
+            <label for="total_denda">Total Denda</label>
+            <input type="number" class="form-control @error('total_denda') is-invalid @enderror" name="total_denda" id="total_denda" min="25000" max="2500000" value="{{ old('total_denda') ?? $daftar->total_denda}}">
+            @error('total_denda')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+    {{-- <div class="row">
+        <div class="col-md-6 p-4">
+            <label for="tempat">Temat Sidang</label>
+            <select class="form-control @error('tempat') is-invalid @enderror" >
+                <option value="" disabled selected >Select</option>
+                <option value="{{ old('tempat') }}">Kejaksaan Negri</option>
+                <option value="{{ old('tempat') }}">Porlestabes</option>
+                <option value="{{ old('tempat') }}">Polsek</option>
+            </select>
+            @error('tempat')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6 p-4">
+            <label for="Status">Status</label>
+            <select class="form-control @error('Status') is-invalid @enderror" >
+                <option value="" disabled selected >Select</option>
+                <option value="{{ old('Status') }}">Berjalan</option>
+                <option value="{{ old('Status') }}">Selesai</option>
+                <option value="{{ old('Status') }}">Tidak Menghadiri Sidang</option>
+            </select>
+            @error('Status')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    </div> --}}
+    <div class="form-group p-2">
+        <label for="pelaku">Foto Pelaku </label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                {{-- <span class="input-group-text" id="image-label">Image</span> --}}
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="pelaku" id="pelaku">
+                <label class="custom-file-label" for="pelaku" value="{{ old('pelaku') ?? $daftar->pelaku}}">Choose file</label>
+            </div>
+            </div>
+            @error('pelaku')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+    <div class="col-md-6 mb-3 p-4">
+        <button type="submit" class="btn btn-outline-primary">Simpan</button>
+        <input class="btn btn-outline-danger" action="action"  onclick="window.history.go(-1); return false;"   type="submit" value="Batal">
+    </div>
+    </div>
 
-
-<div class="row">
-<div class="col-md-6 mb-3">
-<label for="title">Title</label>
-<input type="text" class="form-control @error('title') is-invalid @enderror"
-name="title" id="title" value="{{ old('title') ?? $daftar->title }}">
-@error('title')
-<div class="text-danger">{{ $message }}</div>
-@enderror
-</div>
-<div class="col-md-6 mb-3">
-<label for="genre">Genre</label>
-<input type="text" class="form-control @error('genre') is-invalid @enderror"
-name="genre" id="genre" value="{{ old('genre') ?? $daftar->genre }}">
-@error('genre')
-<div class="text-danger">{{ $message }}</div>
-@enderror
-</div>
-</div>
-<div class="form-group">
-<label for="description">Description</label>
-<textarea class="form-control @error('description') is-invalid @enderror"
-name="description" id="description"
-rows="3">{{ old('description') ?? $daftar->description }}
-</textarea>
-@error('description')
-<div class="text-danger">{{ $message }}</div>
-@enderror
-</div>
-<div class="row">
-<div class="col-md-6 mb-3">
-<label for="title">Year</label>
-<input type="number"
-class="form-control @error('year') is-invalid @enderror" name="year"
-id="year" min="1900" max="2099" value="{{ old('year') ?? $daftar->year }}">
-@error('year')
-<div class="text-danger">{{ $message }}</div>
-@enderror
-</div>
-<div class="col-md-6 mb-3">
-<label for="genre">Rating</label>
-<input type="number" step="0.1"
-class="form-control @error('rating') is-invalid @enderror"
-name="rating" id="rating" min="1" max="10"
-value="{{ old('rating') ?? $daftar->rating }}">
-@error('rating')
-<div class="text-danger">{{ $message }}</div>
-@enderror
-</div>
-</div>
-<button class="btn btn-primary btn-lg btn-block" type="submit">Update</button>
 </form>
 @endsection
+{{--
+@push('js_after')
+<script>
+ // Untuk upload file
+ $(".custom-file-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+@endpush --}}
+

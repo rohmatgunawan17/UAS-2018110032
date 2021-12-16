@@ -1,7 +1,7 @@
-{{-- @extends('layouts.app') --}}
+@extends('layouts.app')
 @extends('layouts.master')
 
-@section('title', 'Daftar Penduduk')
+@section('title', 'Data Penilangan')
 
 @section('content')
 <div class="container pt-4 " style="background-color: rgba(202, 199, 199, 0.918)">

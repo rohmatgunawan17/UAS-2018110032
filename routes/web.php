@@ -34,5 +34,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/daftar', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
 // Route::get('/detail', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
 // Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');
-// Route::get('/daftar-tilang', [DaftarTilangController::class, 'index']);
-// Route::get('/daftar-tilang-data', [DaftarTilangController::class, 'getDaftarTilangs'])->name('daftar.tilang');
+Route::get('/daftar-tilang', [DaftarTilangController::class, 'index']);
+Route::get('/daftar-tilang-data', [DaftarTilangController::class, 'getDaftarTilangs'])->name('daftar.tilang');

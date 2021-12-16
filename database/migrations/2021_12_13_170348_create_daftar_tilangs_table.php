@@ -15,19 +15,19 @@ class CreateDaftarTilangsTable extends Migration
     {
         Schema::create('daftar_tilangs', function (Blueprint $table) {
             // $table->id();
-            $table->string('barang_bukti');
+            $table->string('barang_bukti')->nullabel();
             $table->integer('no_stnk_sim');
             $table->string('nama');
             $table->string('no_kendaraan');
             $table->date('tanggal_tilang');
             $table->date('tanggal_sidang');
             $table->string('status_penilangan');
-            // $table->string('pelanggaran')->nullabel();
-            // $table->integer('total_denda')->nullabel();
-            // $table->string('tempat_sidang')->nullabel();
+            $table->string('pelanggaran')->nullabel();
+            $table->integer('total_denda')->nullabel();
+            $table->string('tempat_sidang')->nullabel();
             $table->string('alamat');
-            // $table->string('keterangan')->nullabel();
-            // $table->string('surat_tilang')->nullabel();
+            $table->string('keterangan')->nullabel();
+            $table->string('surat_tilang')->nullabel();
             $table->timestamps();
         });
     }
