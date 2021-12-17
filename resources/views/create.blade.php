@@ -11,14 +11,16 @@
     @csrf
     <div class="row">
         <div class="col-md-6 p-4 ">
-            <label for="barang_bukti">Tipe Barang Bukti</label>
-            <input type="text" class="form-control @error('barang_bukti') is-invalid @enderror" name="barang_bukti" id="barang_bukti" value="{{ old('barang_bukti') }}">
-            {{-- <select class="form-control @error('bukti') is-invalid @enderror" >
-                <option value="" disabled selected >Select</option>
-                <option value="{{ old('bukti') }}">STNK</option>
-                <option value="{{ old('bukti') }}">SIM</option>
-                <option value="{{ old('bukti') }}">SEPEDA MOTOR</option>
-            </select> --}}
+            <label for="bukti">Tipe Barang Bukti</label>
+            {{-- <input type="text" class="form-control @error('barang_bukti') is-invalid @enderror" name="barang_bukti" id="barang_bukti" value="{{ old('barang_bukti') }}"> --}}
+            <select name="barang_bukti" class="form-control" >
+                <option  value="" disabled selected >Pilih</option>
+                    @foreach ( $bukti as $item  )
+                    <option value="{{$item->id}}" >{{$item->bukti}}</option>
+                    @endforeach
+                {{-- <option value="{{ old('bukti') }}">SIM</option>
+                <option value="{{ old('bukti') }}">SEPEDA MOTOR</option> --}}
+            </select>
             @error('barang_bukti')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -79,32 +81,32 @@
             @enderror
         </div>
     </div>
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-md-6 p-4">
-            <label for="tempat">Temat Sidang</label>
-            <select class="form-control @error('tempat') is-invalid @enderror" >
+            <label for="tempat_sidang">Temat Sidang</label>
+            <select name="tempat_sidang" class="form-control @error('tempat') is-invalid @enderror" >
                 <option value="" disabled selected >Select</option>
-                <option value="{{ old('tempat') }}">Kejaksaan Negri</option>
-                <option value="{{ old('tempat') }}">Porlestabes</option>
-                <option value="{{ old('tempat') }}">Polsek</option>
+                <option value="1">Kejaksaan Negri</option>
+                <option value="2">Porlestabes</option>
+                <option value="3">Polsek</option>
             </select>
-            @error('tempat')
+            @error('tempat_sidang')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col-md-6 p-4">
-            <label for="Status">Status</label>
-            <select class="form-control @error('Status') is-invalid @enderror" >
+            <label for="status_penilangan">Status</label>
+            <select name="status_penilangan" class="form-control @error('Status') is-invalid @enderror" >
                 <option value="" disabled selected >Select</option>
-                <option value="{{ old('Status') }}">Berjalan</option>
-                <option value="{{ old('Status') }}">Selesai</option>
-                <option value="{{ old('Status') }}">Tidak Menghadiri Sidang</option>
+                <option value="1">Berjalan</option>
+                <option value="2">Selesai</option>
+                <option value="3">Tidak Menghadiri Sidang</option>
             </select>
-            @error('Status')
+            @error('status_penilangan')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-    </div> --}}
+    </div>
     <div class="form-group p-2">
         <label for="pelaku">Foto Pelaku </label>
         <div class="input-group">
@@ -112,8 +114,8 @@
                 {{-- <span class="input-group-text" id="image-label">Image</span> --}}
             </div>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" name="pelaku" id="pelaku">
-                <label class="custom-file-label" for="pelaku" value="file">Choose file</label>
+                <input type="file" class="custom-file-input" name="pelaku" id="pelaku" >
+                <label class="custom-file-label" for="pelaku" value="" onclick="file()"></label>
             </div>
             </div>
             @error('pelaku')
@@ -127,14 +129,23 @@
     </div>
 
 </form>
+<button onclick="bebas()">Simpan</button>
+<p id="tes"></p>
 @endsection
 
 @push('js_after')
+<script src="{{ asset('js/tes.js') }}"><script>
 <script>
+// var fileLabel = document.getElementsByClassName('custom-file-label');
+function bebas() {
+    document.getElementsById('tes').innerHTML = "masuk";
+}
  // Untuk upload file
  $(".custom-file-input").on("change", function () {
     var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    console.log(fileName);
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+
 </script>
 @endpush

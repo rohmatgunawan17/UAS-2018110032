@@ -43,9 +43,9 @@
             <tbody>
                 <tr>
                     <th scope="row">{{$d->barang_bukti}}</th>
-                        <td>{{$d->no_stnk_sim}}</td>
+                        <td>{{$d->no}}</td>
                         <td>{{$d->nama}}</td>
-                        <td>{{$d->no_kendaraan}}</td>
+                        <td>{{$d->alamat}}</td>
                         <td>{{$d->tanggal_tilang}}</td>
                         <td style="width: 20%">
                             <a href="#"><i class="fas fa-eye" data-toggle="modal" data-target="#staticBackdrop"> detail  </i></a>
@@ -96,9 +96,9 @@
                 <tbody>
                     <tr>
                         <th scope="row">{{$d->barang_bukti}}</th>
-                            <td>{{$d->no_stnk_sim}}</td>
+                            <td>{{$d->no}}</td>
                             <td>{{$d->nama}}</td>
-                            <td>{{$d->no_kendaraan}}</td>
+                            <td>{{$d->alamat}}</td>
                             <td>{{$d->tanggal_tilang}}</td>
                             <td style="width: 40%">{{$d->pelanggaran}}
                             </td>

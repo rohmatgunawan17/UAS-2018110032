@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\daftar;
+use App\Models\barang_bukti;
+use App\Models\Daftar;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class DaftarController extends Controller
 
     public function index()
     {
-        $daftar = DB::select("SELECT * FROM `daftars`");
+        $daftar = DB::table('daftars')->paginate(1);
         return view("index", [
             'daftar' => $daftar
         ]);
@@ -42,13 +43,22 @@ class DaftarController extends Controller
 
     public function create()
     {
-        return view('create');
+        $bukti = barang_bukti::all();
+        // dd($bukti);
+        return view('create', compact('bukti'));
     }
+
+
+    // public function selectsector() //this is the dropdown #1 that works fine
+    // {
+    //     $buktis = DB::table('barang_buktis')->whereBetween('id', [1, 10])->value('nama');
+    //     return view('create', ['buktis' => $buktis]);
+    // }
 
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'barang_bukti' => 'required|max:200',
+            'barang_bukti' => 'max:200',
             'no' => 'required|max:200',
             'nama' => 'required|max:200',
             'alamat' => 'required|max:200',
@@ -60,26 +70,15 @@ class DaftarController extends Controller
             'status_penilangan' => 'max:200',
             'pelaku' => 'file|image|max:5000',
         ]);
-        $daftar = new daftar();
-        $daftar->barang_bukti = $validateData['barang_bukti'];
-        $daftar->no = $validateData['no'];
-        $daftar->nama = $validateData['nama'];
-        $daftar->alamat = $validateData['alamat'];
-        $daftar->tanggal_tilang = $validateData['tanggal_tilang'];
-        $daftar->tanggal_sidang = $validateData['tanggal_sidang'];
-        $daftar->pelanggaran = $validateData['pelanggaran'];
-        $daftar->total_denda = $validateData['total_denda'];
-        $daftar->tempat_sidang = "tes";
-        $daftar->status_penilangan = "tes";
-        $daftar->pelaku = $validateData['pelaku'];
-        // dd($daftar);
+        // dd($validateData);
         // $daftar->save();
 
-        // $daftar = daftar::create($validateData);
+        $daftar = daftar::create($validateData);
         $fileExtension = $request->pelaku->getClientOriginalExtension();
         $fileRename = "img-" . time() . ".{$fileExtension}";
         $request->pelaku->storeAs('public', $fileRename);
         $daftar->pelaku = $fileRename;
+        // dd($daftar->pelaku);
         $daftar->save();
 
 
@@ -113,10 +112,10 @@ class DaftarController extends Controller
             'total_denda' => 'required|integer|max:2500000',
             'tempat_sidang' => 'max:200',
             'status_penilangan' => 'max:200',
-            'pelaku' => 'file|image|max:5000',
+            // 'pelaku' => 'file|image|max:5000',
         ]);
         $daftar->update($validateData);
-        $request->session()->flash('success', "Successfully updating {$validateData['title']}!");
+        $request->session()->flash('success', "Successfully updating {$validateData['nama']}!");
         return redirect()->route('daftar.index');
     }
 

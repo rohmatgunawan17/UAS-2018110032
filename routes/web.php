@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DaftarTilangController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\BarangBuktiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +29,14 @@ Route::get('/daftar/{daftar}', [DaftarController::class, 'show'])->name('daftar.
 Route::get('/daftar/{daftar}/edit', [DaftarController::class, 'edit'])->name('daftar.edit');
 Route::patch('/daftar/{daftar}', [DaftarController::class, 'update'])->name('daftar.update');
 Route::delete('/daftar/{daftar}', [DaftarController::class, 'destroy'])->name('daftar.destroy');
+// Route::get('/daftar/create', [DaftarController::class, 'selectsector'])->name('daftar.create');
+// Route::get('/daftar/create', [BarangBuktiController::class, 'index'])->name('bukti.index');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/daftar', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
 // Route::get('/detail', [App\Http\Controllers\DaftarController::class, 'daftar'])->name('daftar');
-// Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');
+
 Route::get('/daftar-tilang', [DaftarTilangController::class, 'index']);
 Route::get('/daftar-tilang-data', [DaftarTilangController::class, 'getDaftarTilangs'])->name('daftar.tilang');
+// Route::get('/formDaftar', [App\Http\Controllers\DaftarController::class, 'formDaftar'])->name('formDaftar');

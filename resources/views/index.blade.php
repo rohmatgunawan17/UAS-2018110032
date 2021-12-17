@@ -27,7 +27,7 @@
                 <div class="col-sm-6">
                     <h2>Data Penilangan</h2>
                     <div class="py-2">
-                        <a href="/daftar/create" class="btn btn-outline-primary"><span>+ Tambah Data</span></a>
+                        <a href={{route('daftar.create')}} class="btn btn-outline-primary"><span>+ Tambah Data</span></a>
                     </div>
                 </div>
             </div>
@@ -36,10 +36,10 @@
             <thead>
                 <tr>
                     <th style="width: 4%">No</th>
-                    <th>Pelaku</th>
-                    <th>No SIM /STNK / Kendaraan</th>
+                    <th style="width: 15%">Pelaku</th>
+                    <th style="width: 20%">No SIM /STNK / Kendaraan</th>
                     <th>Nama</th>
-                    <th style="width: 30%">Alamat</th>
+                    <th style="width: 40%">Alamat</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -50,7 +50,7 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td><figure class="figure " >
                         <a href="#">
-                            <img src="/storage/{{ $data->pelaku }}" style="width: 8%">
+                            <img src="/storage/{{ $data->pelaku }}" style="width: 50%">
                         </a>
                     </figure></td>
                     <td>{{ $data->no }}</td>
@@ -58,9 +58,22 @@
                     <td style="width: 30%">{{ $data->alamat }}</td>
                     <td>{{ $data->status_penilangan }}</td>
                     <td style="width: 5%">
-                        <a href="{{ route('daftar.show', $data->id) }}"><i class="fas fa-eye" > Detail  </i></a>
-                        <a href="{{ route('daftar.edit', $data->id) }}"><i class="fas fa-pencil-alt"> Edit  </i></a>
-                        <a href="{{ route('daftar.destroy', $data->id) }}" ><i class="fas fa-minus-circle"> Delete  </i></a>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lainnya
+                            </button>
+                            <div class="dropdown-menu col-sm-4" aria-labelledby="dropdownMenuButton">
+                                <button class="btn btn-outline-info ">
+                                    <a href="{{ route('daftar.show', $data->id) }}"><i class="fas fa-eye" ></i></a>
+                                </button>
+                                <button class="btn btn-outline-warning">
+                                    <a href="{{ route('daftar.edit', $data->id) }}"><i class="fas fa-pencil-alt"></i></a>
+                                </button>
+                                <button class="btn btn-outline-danger">
+                                    <a href="{{ route('daftar.destroy', $data->id) }}" ><i class="fas fa-minus-circle"></i></a>
+                                </button>
+                            </div>
+                          </div>
                     </td>
                 </tr>
                 @endforeach
@@ -69,14 +82,10 @@
                 </tr>
             </tbody>
         </table>
-        {{-- <div class="text-left py-md-2">
-            Halaman :
-            @for ($i = 1; $i < 9; $i++)
-            <button type="button" class="btn btn-dark">
-            {{$i}}
-            </button>
-            @endfor
-        </div> --}}
+        <br>
+        <div class="text-left py-md-2">
+            Halaman : {{ $daftar->links() }}
+        </div>
     </div>
 </div>
 @endsection

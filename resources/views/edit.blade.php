@@ -114,7 +114,7 @@
             </div>
             <div class="custom-file">
                 <input type="file" class="custom-file-input" name="pelaku" id="pelaku">
-                <label class="custom-file-label" for="pelaku" value="{{ old('pelaku') ?? $daftar->pelaku}}">Choose file</label>
+                <label class="custom-file-label" for="pelaku" value="file">Choose file</label>
             </div>
             </div>
             @error('pelaku')
@@ -129,7 +129,7 @@
 
 </form>
 @endsection
-{{--
+
 @push('js_after')
 <script>
  // Untuk upload file
@@ -138,5 +138,5 @@
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 </script>
-@endpush --}}
+@endpush
 

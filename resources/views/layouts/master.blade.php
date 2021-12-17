@@ -111,7 +111,7 @@
                         <a href="#"><span class="fa fa-info-circle mr-2"></span> Informasi</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cog mr-2"></span> Settings</a>
+                        <a href="#"><span class="fa fa-cog mr-2"></span> Pengaturan</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -142,7 +142,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('style/js/jquery.min.js') }}"></script>
+{{-- <script src="{{ asset('style/js/jquery.min.js') }}"></script> --}}
 <script src="{{ asset('style/js/popper.js') }}"></script>
 <script src="{{ asset('style/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('style/js/main.js') }}"></script>
@@ -151,6 +151,7 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 @stack('script');
 </html>
 
