@@ -104,9 +104,6 @@
                             </td>
                             </tr>
                     @endforeach
-                    <tr>
-                        <td align="center" colspan="6">No data yet.</td>
-                    </tr>
                 </tbody>
             </table>
         </div>

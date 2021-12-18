@@ -142,7 +142,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
-{{-- <script src="{{ asset('style/js/jquery.min.js') }}"></script> --}}
+<script src="{{ asset('style/js/jquery.min.js') }}"></script>
 <script src="{{ asset('style/js/popper.js') }}"></script>
 <script src="{{ asset('style/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('style/js/main.js') }}"></script>

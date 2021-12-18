@@ -57,29 +57,26 @@
                     <td>{{ $data->nama }}</td>
                     <td style="width: 30%">{{ $data->alamat }}</td>
                     <td>{{ $data->status_penilangan }}</td>
-                    <td style="width: 5%">
+                    <td style="width: 4%">
                         <div class="dropdown">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Lainnya
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                              Lainnya
                             </button>
-                            <div class="dropdown-menu col-sm-4" aria-labelledby="dropdownMenuButton">
-                                <button class="btn btn-outline-info ">
-                                    <a href="{{ route('daftar.show', $data->id) }}"><i class="fas fa-eye" ></i></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="btn btn-outline-info btn-sm">
+                                    <a href="{{ route('daftar.show', $data->id) }}"><i class="fas fa-eye" > Detail</i></a>
                                 </button>
-                                <button class="btn btn-outline-warning">
-                                    <a href="{{ route('daftar.edit', $data->id) }}"><i class="fas fa-pencil-alt"></i></a>
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <a href="{{ route('daftar.edit', $data->id) }}"><i class="fas fa-pencil-alt"> Edit</i></a>
                                 </button>
-                                <button class="btn btn-outline-danger">
-                                    <a href="{{ route('daftar.destroy', $data->id) }}" ><i class="fas fa-minus-circle"></i></a>
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <a href="{{ route('daftar.destroy', $data->id) }}" ><i class="fas fa-minus-circle"> Hapus</i></a>
                                 </button>
                             </div>
                           </div>
                     </td>
                 </tr>
                 @endforeach
-                <tr>
-                    <td align="center" colspan="7">Tidak ada data lagi</td>
-                </tr>
             </tbody>
         </table>
         <br>

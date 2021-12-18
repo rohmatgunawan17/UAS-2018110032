@@ -49,7 +49,7 @@
                         <div class="col-md-12">
                             <form action="{{url('/search')}}" type="get">
                                 <div class="input-group">
-                                    <input type="search" class="form-control rounded" placeholder="Masuk no tilang .." aria-label="Search" aria-describedby="search-addon" name="search"/>
+                                    <input type="search" class="form-control rounded" placeholder="Masukan no STNK /SIM /Kendaraan .." aria-label="Search" aria-describedby="search-addon" name="search"/>
                                     <button type="submit" class="btn btn-outline-primary">Cari</button>
                                 </div>
                             </form>

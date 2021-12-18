@@ -129,17 +129,11 @@
     </div>
 
 </form>
-<button onclick="bebas()">Simpan</button>
-<p id="tes"></p>
 @endsection
 
 @push('js_after')
 <script src="{{ asset('js/tes.js') }}"><script>
 <script>
-// var fileLabel = document.getElementsByClassName('custom-file-label');
-function bebas() {
-    document.getElementsById('tes').innerHTML = "masuk";
-}
  // Untuk upload file
  $(".custom-file-input").on("change", function () {
     var fileName = $(this).val().split("\\").pop();
