@@ -102,16 +102,10 @@
                         {{-- <a href="/pendaftaran"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Download</a> --}}
                     </li>
                     <li>
-                        <a href="/daftar"><span class="fa fa-table mr-2"></span> Pendaftaran</a>
+                        <a href="/daftar"><span class="fa fa-table mr-2"></span> Data E-Tilang</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-trophy mr-2"></span> Top Review</a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="fa fa-info-circle mr-2"></span> Informasi</a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="fa fa-cog mr-2"></span> Pengaturan</a>
+                        <a href="/pengaturan"><span class="fa fa-cog mr-2"></span> Pengaturan</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

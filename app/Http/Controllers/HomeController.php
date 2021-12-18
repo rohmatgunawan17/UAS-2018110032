@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Daftar;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $daftar = DB::select("SELECT * FROM `daftars`");
+        return view("home", compact('daftar'));
+    }
+    public function search()
+    {
+        $search = $_GET['search'];
+        $daftar = DB::select("SELECT * FROM `daftars`WHERE `nama` LIKE '%$search%' OR `no` LIKE '%$search%'");
+        return view("search", compact('daftar'));
     }
 }

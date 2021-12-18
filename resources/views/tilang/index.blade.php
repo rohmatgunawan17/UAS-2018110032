@@ -56,22 +56,23 @@
                     <td>{{ $data->no }}</td>
                     <td>{{ $data->nama }}</td>
                     <td style="width: 30%">{{ $data->alamat }}</td>
-                    <td>{{ $data->status_penilangan }}</td>
+                    <td style="width: 30%">
+                        @if ($data->status_penilangan==1)
+                         Sedang Berlangsung
+                    @elseif ($data->status_penilangan ==2)
+                        Tidak Mengadiri Persidangan
+                            @elseif ($data->status_penilangan==3)
+                        Selesai
+                    @endif</td>
                     <td style="width: 4%">
                         <div class="dropdown">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                               Lainnya
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <button class="btn btn-outline-info btn-sm">
-                                    <a href="{{ route('daftar.show', $data->id) }}"><i class="fas fa-eye" > Detail</i></a>
-                                </button>
-                                <button class="btn btn-outline-warning btn-sm">
-                                    <a href="{{ route('daftar.edit', $data->id) }}"><i class="fas fa-pencil-alt"> Edit</i></a>
-                                </button>
-                                <button class="btn btn-outline-danger btn-sm">
-                                    <a href="{{ route('daftar.destroy', $data->id) }}" ><i class="fas fa-minus-circle"> Hapus</i></a>
-                                </button>
+                                <a href="{{ route('daftar.show', $data->id) }}" class="btn btn-outline-info btn-sm"><span class="fas fa-eye"> Detail</span></a>
+                                <a href="{{ route('daftar.edit', $data->id) }}" class="btn btn-outline-warning btn-sm "><span class="fas fa-pencil-alt"> Ubah</span></a>
+                                <a href="{{ route('daftar.destroy', $data->id) }}" class="btn btn-outline-danger btn-sm"><span class="fas fa-minus-circle"> Hapus</span></a>
                             </div>
                           </div>
                     </td>

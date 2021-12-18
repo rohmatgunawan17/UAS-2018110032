@@ -12,14 +12,28 @@
     @csrf
     <div class="row">
         <div class="col-md-6 p-4 ">
-            <label for="barang_bukti">Tipe Barang Bukti</label>
-            <input type="text" class="form-control @error('barang_bukti') is-invalid @enderror" name="barang_bukti" id="barang_bukti" value="{{ old('barang_bukti') ?? $daftar->barang_bukti }}">
-            {{-- <select class="form-control @error('bukti') is-invalid @enderror" >
-                <option value="" disabled selected >Select</option>
-                <option value="{{ old('bukti') }}">STNK</option>
-                <option value="{{ old('bukti') }}">SIM</option>
-                <option value="{{ old('bukti') }}">SEPEDA MOTOR</option>
-            </select> --}}
+            <label for="bukti">Tipe Barang Bukti</label>
+            {{-- <input type="text" class="form-control @error('barang_bukti') is-invalid @enderror" name="barang_bukti" id="barang_bukti" value="{{ old('barang_bukti') }}"> --}}
+                <select name="barang_bukti" class="form-control @error('tempat') is-invalid @enderror" >
+                    <option value="" disabled selected >Select</option>
+                    @if ($daftar->barang_bukti == 1)
+                    <option value="1" selected>SIM</option>
+                    <option value="2">STNK</option>
+                    <option value="3">Kendaraan</option>
+                    @elseif ($daftar->barang_bukti == 2)
+                    <option value="1" >SIM</option>
+                    <option value="2" selected>STNK</option>
+                    <option value="3" >Kendaraan</option>
+                    @elseif ($daftar->barang_bukti == 3)
+                    <option value="1" >SIM</option>
+                    <option value="2" >STNK</option>
+                    <option value="3" selected>Kendaraan</option>
+                    @endif
+
+
+                </select>
+                {{-- <option value="{{ old('bukti') }}">SIM</option>
+                <option value="{{ old('bukti') }}">SEPEDA MOTOR</option> --}}
             @error('barang_bukti')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -80,32 +94,53 @@
             @enderror
         </div>
     </div>
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-md-6 p-4">
-            <label for="tempat">Temat Sidang</label>
-            <select class="form-control @error('tempat') is-invalid @enderror" >
+            <label for="tempat_sidang">Temat Sidang</label>
+            <select class="form-control @error('tempat_sidang') is-invalid @enderror" >
                 <option value="" disabled selected >Select</option>
-                <option value="{{ old('tempat') }}">Kejaksaan Negri</option>
-                <option value="{{ old('tempat') }}">Porlestabes</option>
-                <option value="{{ old('tempat') }}">Polsek</option>
+                    @if ($daftar->tempat_sidang == 1)
+                    <option value="1" selected>Kejaksaan Negri</option>
+                    <option value="2">Porlestabes</option>
+                    <option value="3">Polsek</option>
+                    @elseif ($daftar->tempat_sidang == 2)
+                    <option value="1">Kejaksaan Negri</option>
+                    <option value="2" selected>Porlestabes</option>
+                    <option value="3">Polsek</option>
+                    @elseif ($daftar->tempat_sidang == 3)
+                    <option value="1">Kejaksaan Negri</option>
+                    <option value="2">Porlestabes</option>
+                    <option value="3" selected>Polsek</option>
+                    @endif
             </select>
-            @error('tempat')
+            @error('tempat_sidang')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col-md-6 p-4">
-            <label for="Status">Status</label>
-            <select class="form-control @error('Status') is-invalid @enderror" >
+            <label for="status_penilangan">Status</label>
+            <select class="form-control @error('status_penilangan') is-invalid @enderror" >
                 <option value="" disabled selected >Select</option>
-                <option value="{{ old('Status') }}">Berjalan</option>
-                <option value="{{ old('Status') }}">Selesai</option>
-                <option value="{{ old('Status') }}">Tidak Menghadiri Sidang</option>
+                    @if ($daftar->status_penilangan == 1)
+                    <option value="1" selected>Berjalan</option>
+                    <option value="2" >Tidak Menghadiri Sidang</option>
+                    <option value="3" >Selesai</option>
+                    @elseif ($daftar->status_penilangan == 2)
+                    <option value="1" >Berjalan</option>
+                    <option value="2" selected>Tidak Menghadiri Sidang</option>
+                    <option value="3" >Selesai</option>
+                    @elseif ($daftar->status_penilangan == 3)
+                    <option value="1" >Berjalan</option>
+                    <option value="2" >Tidak Menghadiri Sidang</option>
+                    <option value="3" selected>Selesai</option>
+                    @endif
+
             </select>
-            @error('Status')
+            @error('status_penilangan')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-    </div> --}}
+    </div>
     <div class="form-group p-2">
         <label for="pelaku">Foto Pelaku </label>
         <div class="input-group">

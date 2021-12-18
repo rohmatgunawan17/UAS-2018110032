@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class barang_bukti extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

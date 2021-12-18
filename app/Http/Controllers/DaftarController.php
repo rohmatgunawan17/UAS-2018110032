@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\barang_bukti;
+// use App\Models\barang_bukti;
 use App\Models\Daftar;
 use Illuminate\Support\Facades\DB;
 
@@ -25,27 +25,29 @@ class DaftarController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function daftar()
-    {
-        $daftar = DB::select("SELECT * FROM `daftars`");
-        return view("daftar", [
-            'daftar' => $daftar
-        ]);
-    }
 
     public function index()
     {
         $daftar = DB::table('daftars')->paginate(1);
-        return view("index", [
+        return view("tilang.index", [
             'daftar' => $daftar
         ]);
     }
 
+    // public function search()
+    // {
+    //     $search = $_GET['search'];
+    //     $daftar = DB::select("SELECT * FROM `daftar`WHERE `no` = '$search'");
+    //     return view("search", [
+    //         'daftar' => $daftar
+    //     ]);
+    // }
+
     public function create()
     {
-        $bukti = barang_bukti::all();
-        // dd($bukti);
-        return view('create', compact('bukti'));
+        // $bukti = barang_bukti::all();
+        // // dd($bukti);
+        return view('tilang.create');
     }
 
 
@@ -85,19 +87,25 @@ class DaftarController extends Controller
 
 
 
-        $request->session()->flash('success', "Successfully adding {$validateData['nama']}!");
+        $request->session()->flash('success', " {$validateData['nama']} Berhasil Di tambahkan !");
         return redirect()->route('daftar.index');
     }
 
     public function show(daftar $daftar)
     {
-        return view('show', compact('daftar'));
+        return view('tilang.show', compact('daftar'));
     }
 
     public function edit(daftar $daftar)
     {
+
+        // $daftar = DB::table('daftars')
+        //     ->join('barang_buktis', 'barang_buktis.kode', '=', 'daftars.barang_bukti')
+        //     ->select('barang_buktis.bukti', 'barang_buktis.keterangan')
+        //     ->get();
         // dump($daftar);
-        return view('edit', compact('daftar'));
+        // $daftar = Daftar::all();
+        return view('tilang.edit', compact('daftar'));
     }
     public function update(Request $request, daftar $daftar)
     {
@@ -115,14 +123,14 @@ class DaftarController extends Controller
             // 'pelaku' => 'file|image|max:5000',
         ]);
         $daftar->update($validateData);
-        $request->session()->flash('success', "Successfully updating {$validateData['nama']}!");
+        $request->session()->flash('success', "{$validateData['nama']} Berhasil di edit!");
         return redirect()->route('daftar.index');
     }
 
     public function destroy(daftar $daftar)
     {
         $daftar->delete();
-        return redirect()->route('daftar.index')->with('success', "Successfully deleting {$daftar['title']}!");
+        return redirect()->route('daftar.index')->with('success', " {$daftar['nama']} Berhasil dihapus!");
     }
 
     public function imageUpload(Request $request)
@@ -137,15 +145,5 @@ class DaftarController extends Controller
         } else {
             echo "No uploaded file!";
         }
-    }
-
-
-    public function search()
-    {
-        $search = $_GET['search'];
-        $daftars = DB::select("SELECT * FROM `daftars`WHERE `name` LIKE '%$search%' OR `no_stnk_sim` LIKE '$search'");
-        return view("search", [
-            'daftars' => $daftars
-        ]);
     }
 }
